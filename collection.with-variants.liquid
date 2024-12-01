@@ -1,0 +1,17 @@
+{% extends 'collection' %}
+
+{% block content %}
+  <div class="collection-variants">
+    {% for product in collection.products %}
+      {% for variant in product.variants %}
+        <div class="product">
+          <a href="{{ product.url }}">
+            <img src="{{ variant.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+            <p>{{ product.title }} - {{ variant.title }}</p>
+            <p>{{ variant.price | money }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+{% endblock %}
